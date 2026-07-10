@@ -63,8 +63,18 @@ app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/coupons", couponsRoutes);
 app.use("/api/v1/reviews", reviewsRoutes);
 
-app.use((_req: Request, res: Response) => {
-  res.status(404).json({ error: { message: "Route not found" } });
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
+
+app.use((_req: Request, res: Response, next: express.NextFunction) => {
+  if (_req.url.startsWith("/api")) {
+    res.status(404).json({ error: { message: "Route not found" } });
+  } else {
+    next();
+  }
+});
+
+app.get("*", (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
 });
 
 app.use(errorHandler);
