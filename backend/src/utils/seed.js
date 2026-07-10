@@ -1,0 +1,82 @@
+const { writeCollection } = require("./db");
+
+const products = [
+  {
+    id: "p1",
+    name: "Wireless Headphones",
+    price: 59.99,
+    image: "https://picsum.photos/seed/headphones/400/300",
+    description: "Comfortable over-ear wireless headphones with 20hr battery life.",
+    category: "Electronics",
+    stock: 25
+  },
+  {
+    id: "p2",
+    name: "Ceramic Coffee Mug",
+    price: 12.5,
+    image: "https://picsum.photos/seed/mug/400/300",
+    description: "Hand-glazed 350ml ceramic mug, dishwasher safe.",
+    category: "Home",
+    stock: 40
+  },
+  {
+    id: "p3",
+    name: "Canvas Backpack",
+    price: 45.0,
+    image: "https://picsum.photos/seed/backpack/400/300",
+    description: "Durable canvas backpack with laptop sleeve, fits up to 15 inch.",
+    category: "Accessories",
+    stock: 15
+  },
+  {
+    id: "p4",
+    name: "Desk Lamp",
+    price: 24.99,
+    image: "https://picsum.photos/seed/lamp/400/300",
+    description: "Adjustable LED desk lamp with 3 brightness modes.",
+    category: "Home",
+    stock: 30
+  },
+  {
+    id: "p5",
+    name: "Running Shoes",
+    price: 79.0,
+    image: "https://picsum.photos/seed/shoes/400/300",
+    description: "Lightweight running shoes with breathable mesh upper.",
+    category: "Footwear",
+    stock: 20
+  },
+  {
+    id: "p6",
+    name: "Notebook Set",
+    price: 9.99,
+    image: "https://picsum.photos/seed/notebook/400/300",
+    description: "Pack of 3 dotted notebooks, 120 pages each.",
+    category: "Stationery",
+    stock: 60
+  },
+  {
+    id: "p7",
+    name: "Bluetooth Speaker",
+    price: 34.5,
+    image: "https://picsum.photos/seed/speaker/400/300",
+    description: "Portable waterproof speaker with 12hr playback.",
+    category: "Electronics",
+    stock: 18
+  },
+  {
+    id: "p8",
+    name: "Yoga Mat",
+    price: 19.99,
+    image: "https://picsum.photos/seed/yogamat/400/300",
+    description: "Non-slip 6mm yoga mat with carry strap.",
+    category: "Fitness",
+    stock: 22
+  }
+];
+
+writeCollection("products", products);
+writeCollection("users", []);
+writeCollection("orders", []);
+
+console.log(`Seeded ${products.length} products, and reset users/orders.`);

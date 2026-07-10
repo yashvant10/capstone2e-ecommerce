@@ -1,0 +1,17 @@
+[
+  {
+    "id": "o_1783665303737",
+    "userId": "u_1783665296414",
+    "items": [
+      {
+        "productId": "p1",
+        "name": "Wireless Headphones",
+        "price": 59.99,
+        "quantity": 1
+      }
+    ],
+    "total": 59.99,
+    "status": "placed",
+    "createdAt": "2026-07-10T06:35:03.737Z"
+  }
+]

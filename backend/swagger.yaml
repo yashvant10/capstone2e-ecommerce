@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  title: Stockroom Premium E-commerce API
+  version: 1.0.0
+  description: API documentation for the Capstone Stockroom E-commerce project.
+servers:
+  - url: http://localhost:4000/api/v1
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /auth/login:
+    post:
+      summary: User Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Successful login
+  /products:
+    get:
+      summary: List Products
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+        - in: query
+          name: category
+          schema:
+            type: string
+        - in: query
+          name: sort
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A paginated array of products
+  /cart:
+    get:
+      summary: Get user cart
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: User cart with items
+  /orders:
+    post:
+      summary: Create Order
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                items:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      productId:
+                        type: string
+                      quantity:
+                        type: integer
+                deliveryAddress:
+                  type: string
+                couponCode:
+                  type: string
+      responses:
+        '201':
+          description: Order created
