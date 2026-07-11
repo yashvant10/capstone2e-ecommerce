@@ -5,6 +5,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stockroom — Everyday goods</title>
+    <script>
+      window.onerror = function(msg, url, line, col, error) {
+        document.body.innerHTML += '<div style="color:red;z-index:9999;position:fixed;top:0;left:0;background:white;padding:20px;font-size:16px;border:2px solid red;"><b>CRITICAL CRASH:</b><br/>' + msg + '<br/><pre>' + (error && error.stack) + '</pre></div>';
+      };
+      window.addEventListener('unhandledrejection', function(event) {
+        document.body.innerHTML += '<div style="color:red;z-index:9999;position:fixed;top:0;left:0;background:white;padding:20px;font-size:16px;border:2px solid red;"><b>PROMISE CRASH:</b><br/>' + event.reason + '</div>';
+      });
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
