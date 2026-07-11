@@ -21,7 +21,10 @@ import reviewsRoutes from "./routes/reviews.routes";
 
 const app = express();
 
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: false,
+  crossOriginResourcePolicy: false,
+}));
 app.use(cors({ 
   origin: process.env.CLIENT_ORIGIN || "http://localhost:5173",
   credentials: true 
